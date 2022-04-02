@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id "com.google.devtools.ksp" version '1.6.10-1.0.4'
+}
+
+ext.koin_version = "3.1.5"
+ext.koinAnnotations = "1.0.0-beta-1"
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+// Add Maven Central to your repositories if needed
+repositories {
+    mavenCentral()
+}
+
+// Use KSP Plugin
+apply plugin: 'com.google.devtools.ksp'
+
+// Use KSP Generated sources
+sourceSets.main {
+    java.srcDirs("build/generated/ksp/main/kotlin")
+}
+
+dependencies {
+    // Koin
+    compile "io.insert-koin:koin-core:$koin_version"
+
+    // Koin Annotations
+    implementation "io.insert-koin:koin-annotations:$koinAnnotations"
+    // Koin Annotations - Ksp Compiler
+    ksp "io.insert-koin:koin-ksp-compiler:$koinAnnotations"
+}
