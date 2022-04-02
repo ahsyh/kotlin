@@ -1,0 +1,20 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "1.5.10"
+}
+
+ext.kotlin_version = '1.5.10'
+ext.koin_version = "3.1.1"
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Koin for Kotlin apps
+    compile "io.insert-koin:koin-core:$koin_version"
+    // Testing
+    testCompile "io.insert-koin:koin-test:$koin_version"
+}
